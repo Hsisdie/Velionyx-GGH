@@ -35,8 +35,9 @@ def _process_audio(data: bytes, mime: str, filename: str):
         with open(c_path, "w", encoding="utf-8") as f: f.write(form.model_dump_json())
         st.session_state["is_cached"] = False
     except Exception as e:
-        if os.path.exists(c_path):
-            with open(c_path, "r", encoding="utf-8") as f: form = PatientForm.model_validate_json(f.read())
+        cache_file = c_path if os.path.exists(c_path) else (os.path.join(c_dir, "t1_fever.wav.json") if os.path.exists(os.path.join(c_dir, "t1_fever.wav.json")) else None)
+        if cache_file and os.path.exists(cache_file):
+            with open(cache_file, "r", encoding="utf-8") as f: form = PatientForm.model_validate_json(f.read())
             st.session_state["is_cached"] = True
         else: raise e
     st.session_state["verifier_notes"] = get_last_verifier_changes()
