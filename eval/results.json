@@ -1,0 +1,225 @@
+{
+  "metrics": {
+    "field_accuracy": 0.0,
+    "hallucination_count": 1,
+    "danger_recall": 0.0,
+    "false_alarms": 0
+  },
+  "cases": [
+    {
+      "id": "t1_fever",
+      "status": "FAIL",
+      "expected": {
+        "name": "Sita Devi",
+        "age": "28",
+        "village": "Rampur",
+        "symptoms": [
+          "fever",
+          "body ache"
+        ],
+        "duration": "2 days",
+        "medicines": [
+          "paracetamol"
+        ],
+        "pregnant": null,
+        "danger": false,
+        "not_said": [
+          "pregnant",
+          "temperature"
+        ]
+      },
+      "actual": {
+        "name": "Akshay Singh",
+        "age": "21",
+        "village": null,
+        "symptoms": [
+          "fever",
+          "fatigue"
+        ],
+        "duration": "some time",
+        "temperature": null,
+        "medicines": [],
+        "pregnant": "no"
+      },
+      "risk": "low",
+      "diff": "name: exp Sita Devi, got Akshay Singh; age: exp 28, got 21; village: exp Rampur, got None; symptoms: exp ['fever', 'body ache'], got ['fever', 'fatigue']; duration: exp 2 days, got some time; medicines: exp ['paracetamol'], got []; hallucinated pregnant=no"
+    },
+    {
+      "id": "t2_pregnant_danger",
+      "status": "MISSING",
+      "expected": {
+        "name": "Geeta Yadav",
+        "age": "24",
+        "symptoms": [
+          "severe headache",
+          "blurred vision",
+          "swelling of face"
+        ],
+        "duration": "2 days",
+        "medicines": [],
+        "pregnant": "yes",
+        "danger": true,
+        "not_said": [
+          "temperature"
+        ]
+      },
+      "actual": null,
+      "diff": "Audio missing"
+    },
+    {
+      "id": "t3_child_danger",
+      "status": "MISSING",
+      "expected": {
+        "name": "Rohan",
+        "age": "2 years",
+        "symptoms": [
+          "cough",
+          "fast breathing",
+          "not drinking milk"
+        ],
+        "duration": "3 days",
+        "medicines": [],
+        "pregnant": null,
+        "danger": true,
+        "not_said": [
+          "pregnant",
+          "temperature"
+        ]
+      },
+      "actual": null,
+      "diff": "Audio missing"
+    },
+    {
+      "id": "t4_no_pregnancy",
+      "status": "MISSING",
+      "expected": {
+        "name": "Mohan Lal",
+        "age": "45",
+        "symptoms": [
+          "stomach pain"
+        ],
+        "duration": "since yesterday",
+        "medicines": [],
+        "pregnant": null,
+        "danger": false,
+        "not_said": [
+          "pregnant",
+          "temperature",
+          "medicines"
+        ]
+      },
+      "actual": null,
+      "diff": "Audio missing"
+    },
+    {
+      "id": "t5_unclear_age",
+      "status": "MISSING",
+      "expected": {
+        "name": null,
+        "age": "45 or 50",
+        "symptoms": [
+          "dizziness"
+        ],
+        "duration": null,
+        "medicines": [],
+        "pregnant": null,
+        "danger": false,
+        "not_said": [
+          "name",
+          "pregnant",
+          "temperature"
+        ]
+      },
+      "actual": null,
+      "diff": "Audio missing"
+    },
+    {
+      "id": "t6_chhattisgarhi",
+      "status": "MISSING",
+      "expected": {
+        "name": "Sunita",
+        "age": null,
+        "symptoms": [
+          "fever",
+          "headache"
+        ],
+        "duration": "3 days",
+        "medicines": [],
+        "pregnant": null,
+        "danger": true,
+        "not_said": [
+          "pregnant"
+        ]
+      },
+      "actual": null,
+      "diff": "Audio missing"
+    },
+    {
+      "id": "t7_hinglish",
+      "status": "MISSING",
+      "expected": {
+        "name": "Ramesh",
+        "age": "60",
+        "symptoms": [
+          "dizziness",
+          "chest pain"
+        ],
+        "duration": null,
+        "medicines": [
+          "BP medicine"
+        ],
+        "pregnant": null,
+        "danger": null,
+        "not_said": [
+          "pregnant"
+        ]
+      },
+      "actual": null,
+      "diff": "Audio missing"
+    }
+  ],
+  "cases_table": [
+    {
+      "Case ID": "t1_fever",
+      "Status": "FAIL",
+      "Risk": "low",
+      "Notes": "name: exp Sita Devi, got Akshay Singh; age: exp 28, got 21; village: exp Rampur, got None; symptoms: exp ['fever', 'body ache'], got ['fever', 'fatigue']; duration: exp 2 days, got some time; medicines: exp ['paracetamol'], got []; hallucinated pregnant=no"
+    },
+    {
+      "Case ID": "t2_pregnant_danger",
+      "Status": "MISSING",
+      "Risk": "-",
+      "Notes": "Audio file not found"
+    },
+    {
+      "Case ID": "t3_child_danger",
+      "Status": "MISSING",
+      "Risk": "-",
+      "Notes": "Audio file not found"
+    },
+    {
+      "Case ID": "t4_no_pregnancy",
+      "Status": "MISSING",
+      "Risk": "-",
+      "Notes": "Audio file not found"
+    },
+    {
+      "Case ID": "t5_unclear_age",
+      "Status": "MISSING",
+      "Risk": "-",
+      "Notes": "Audio file not found"
+    },
+    {
+      "Case ID": "t6_chhattisgarhi",
+      "Status": "MISSING",
+      "Risk": "-",
+      "Notes": "Audio file not found"
+    },
+    {
+      "Case ID": "t7_hinglish",
+      "Status": "MISSING",
+      "Risk": "-",
+      "Notes": "Audio file not found"
+    }
+  ]
+}

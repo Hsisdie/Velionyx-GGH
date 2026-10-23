@@ -1,0 +1,94 @@
+[
+  {
+    "id": "t1_fever",
+    "expected": {
+      "name": "Sita Devi",
+      "age": "28",
+      "village": "Rampur",
+      "symptoms": ["fever", "body ache"],
+      "duration": "2 days",
+      "medicines": ["paracetamol"],
+      "pregnant": null,
+      "danger": false,
+      "not_said": ["pregnant", "temperature"]
+    }
+  },
+  {
+    "id": "t2_pregnant_danger",
+    "expected": {
+      "name": "Geeta Yadav",
+      "age": "24",
+      "symptoms": ["severe headache", "blurred vision", "swelling of face"],
+      "duration": "2 days",
+      "medicines": [],
+      "pregnant": "yes",
+      "danger": true,
+      "not_said": ["temperature"]
+    }
+  },
+  {
+    "id": "t3_child_danger",
+    "expected": {
+      "name": "Rohan",
+      "age": "2 years",
+      "symptoms": ["cough", "fast breathing", "not drinking milk"],
+      "duration": "3 days",
+      "medicines": [],
+      "pregnant": null,
+      "danger": true,
+      "not_said": ["pregnant", "temperature"]
+    }
+  },
+  {
+    "id": "t4_no_pregnancy",
+    "expected": {
+      "name": "Mohan Lal",
+      "age": "45",
+      "symptoms": ["stomach pain"],
+      "duration": "since yesterday",
+      "medicines": [],
+      "pregnant": null,
+      "danger": false,
+      "not_said": ["pregnant", "temperature", "medicines"]
+    }
+  },
+  {
+    "id": "t5_unclear_age",
+    "expected": {
+      "name": null,
+      "age": "45 or 50",
+      "symptoms": ["dizziness"],
+      "duration": null,
+      "medicines": [],
+      "pregnant": null,
+      "danger": false,
+      "not_said": ["name", "pregnant", "temperature"]
+    }
+  },
+  {
+    "id": "t6_chhattisgarhi",
+    "expected": {
+      "name": "Sunita",
+      "age": null,
+      "symptoms": ["fever", "headache"],
+      "duration": "3 days",
+      "medicines": [],
+      "pregnant": null,
+      "danger": true,
+      "not_said": ["pregnant"]
+    }
+  },
+  {
+    "id": "t7_hinglish",
+    "expected": {
+      "name": "Ramesh",
+      "age": "60",
+      "symptoms": ["dizziness", "chest pain"],
+      "duration": null,
+      "medicines": ["BP medicine"],
+      "pregnant": null,
+      "danger": null,
+      "not_said": ["pregnant"]
+    }
+  }
+]
