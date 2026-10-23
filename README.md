@@ -1,120 +1,175 @@
 # ASHA Scribe
+### Voice-Powered Health Documentation for Community Health Workers
 
-> Voice-first AI documentation and clinical danger sign assistant for Accredited Social Health Activists (ASHA workers).
+*Team Velionyx · Google Gemini Hackathon · 23 October 2026*
 
----
+ASHA Scribe is an AI-assisted documentation tool designed to help community health workers convert spoken patient information into structured, reviewable health records. It aims to reduce repetitive paperwork while keeping the health worker in control of every record.
 
-## The Problem and Who It Affects
-
-Accredited Social Health Activists (ASHA workers) serve as the frontline of rural and community healthcare in India, conducting home visits, maternal care tracking, and child health monitoring. 
-
-ASHA workers face significant operational burdens:
-- **Paperwork Overload:** Workers spend hours manually filling registers and reporting forms after home visits.
-- **Documentation Errors:** Vital patient details, symptom durations, and warning signs can be missed or recorded inconsistently.
-- **Time Away from Patients:** Extensive manual paperwork reduces the time community health workers can spend counseling and caring for patients.
+> *Safety first:* ASHA Scribe is a documentation assistant, not a diagnostic system. All extracted information must be reviewed and confirmed by the health worker.
 
 ---
 
-## Our Solution and How Gemini Is Used
+## The Problem
 
-ASHA Scribe provides an AI-powered voice assistant that turns spoken patient conversations in Hindi and regional dialects into structured, verified digital records.
+Accredited Social Health Activists (ASHAs) play an important role in connecting communities with healthcare services. Recording patient information accurately can require significant time and repetitive paperwork.
 
-### How Google Gemini Is Used
-- **Multimodal Audio Understanding:** Directly processes voice recordings via the Gemini API using Pydantic structured schemas to extract key fields (patient name, age, village, symptoms, duration, medicines, and pregnancy status).
-- **Two-Stage Hallucination Verifier:** Extracted data undergoes a deterministic fuzzy-matching check against the audio transcript, followed by a Gemini text-verification call to confirm evidence grounding and downgrade unsupported fields.
-- **Rule-Based Danger Sign Detection:** Cross-checks extracted symptoms against clinical danger sign rules to trigger instant high/medium risk alerts.
-- **Bilingual Actionable Summaries:** Generates Devanagari Hindi patient summaries and pre-formatted WhatsApp referral messages for urgent medical attention.
+When documentation is delayed or difficult, important details may be omitted, recorded incorrectly, or require additional follow-up.
 
----
+## Our Solution
 
-## Tech Stack
+ASHA Scribe explores a voice-first workflow that turns a patient conversation into a structured health record for human review.
 
-- **Python** — Core language
-- **Streamlit** — Web application interface
-- **Google Gemini API** (`google-genai` SDK) — Multimodal audio understanding and structured extraction
-- **Pydantic** — Schema definition and data validation
-- **python-dotenv** — Environment configuration management
-- **pytest** — Unit and regression test suite
+### How It Works
 
----
+1. *Capture:* The health worker provides a patient conversation recording or supported audio input.
+2. *Extract:* Gemini processes the supported input to identify relevant information, such as name, age, symptoms and medicines.
+3. *Review:* The application presents extracted information in a structured, editable form.
+4. *Identify gaps:* Missing or uncertain fields are highlighted when supported by the implemented workflow.
+5. *Confirm:* The health worker reviews and confirms the information before using the record.
 
-## Setup and Run Steps
+The goal is to make documentation easier without replacing professional judgement or clinical care.
 
-Clone the repository:
-```bash
+## Key Features
+
+Features should be considered available only when they are implemented and verified in the current build.
+
+- *Voice-first documentation:* Convert supported audio input into structured patient information.
+- *Structured extraction:* Organize relevant details into identifiable fields.
+- *Editable records:* Allow human review and correction of extracted information.
+- *Missing-field awareness:* Identify information that needs further confirmation, if supported by the current build.
+- *Safety-oriented workflow:* Keep human review central and avoid presenting AI output as a diagnosis.
+- *Evaluation suite:* Assess extraction quality and safety-related behaviour using scripted test cases.
+
+## Technology Stack
+
+| Technology | Purpose |
+|---|---|
+| Python | Application logic |
+| Streamlit | Web application interface |
+| Google Gemini API | AI-assisted information extraction |
+| Pydantic | Structured data validation |
+| python-dotenv | Local environment configuration |
+
+The technologies listed above reflect the project's documented dependencies. Exact model names and implemented capabilities should be verified against the current source code.
+
+## Getting Started
+
+### Prerequisites
+
+- Python installed on your system
+- Git
+- A Google Gemini API key
+- Internet access for API-based functionality
+
+### 1. Clone the Repository
+
+bash
 git clone https://github.com/Hsisidie/Velionyx-GGH.git
 cd Velionyx-GGH
-```
 
-Create and activate a virtual environment:
-```bash
+
+### 2. Create a Virtual Environment
+
+*Windows:*
+
+bash
 python -m venv .venv
-```
-- Windows: `.venv\Scripts\activate`
-- Linux/macOS: `source .venv/bin/activate`
+.venv\Scripts\activate
 
-Install dependencies:
-```bash
+
+*Linux / macOS:*
+
+bash
+python3 -m venv .venv
+source .venv/bin/activate
+
+
+### 3. Install Dependencies
+
+bash
 pip install -r requirements.txt
-```
 
-Set up your Gemini API key in `.env`:
-```env
+
+Ensure requirements.txt exists in the repository before running this command.
+
+### 4. Configure the API Key
+
+Create a .env file in the project root:
+
+env
 GEMINI_API_KEY=your_gemini_api_key_here
-```
 
-Run the application:
-```bash
+
+Replace the placeholder with your own API key. Never commit .env or expose API keys in source code, screenshots, logs or public repositories.
+
+### 5. Run the Application
+
+bash
 streamlit run app.py
-```
 
----
 
-## Team Members and Roles
+Open the local URL displayed in the terminal. This command assumes app.py is the application's entry point.
 
-- **Harish Choudhary**: Lead Developer
-- **Vikash Kaushal**: Research and Presentation
-- **Akshay Singh**: Testing and Demo
+## Evaluation
 
----
+The repository's reported eval/results.json values indicate that the current evaluation is *not yet passing*.
 
-## Before vs Built on the Day
-
-Before vs built on the day: nothing existed before 23 Oct 2026.
-
-All application code, Pydantic schemas, danger sign safety logic, deterministic verifier, evaluation suite, offline demo caching, and Streamlit interface were designed and developed from scratch on 23 Oct 2026 for the Google Gemini Hackathon.
-
----
-
-## Credits
-
-- **Google Gemini API**
-- **Google Antigravity**
-- **Streamlit**
-- **Pydantic**
-- **python-dotenv**
-
----
-
-## Limits and Safety
-
-- **No diagnosis:** ASHA Scribe is strictly a documentation aid and referral alert assistant. It does not provide medical diagnoses, clinical determinations, or prescriptions.
-- **Worker confirms:** Every extracted field must be reviewed, verified, and confirmed by the human health worker before any record is saved.
-- **Scripted test data only:** All evaluation cases, audio files, and test scenarios use scripted team test data. No real patient data or patient audio is collected, processed, or stored.
-
----
-
-## Evaluation Results
-
-Real evaluation numbers copied directly from `eval/results.json`:
-
-| Metric | Value |
-|---|---|
+| Metric | Reported result |
+|---|---:|
 | Field Accuracy | 0.0% |
 | Hallucination Count | 1 |
 | Danger Recall | 0.0% |
 | False Alarms | 0 |
 
-### Case Breakdown (eval/results.json)
-- `t1_fever`: Status FAIL, Risk low (Tested against scripted audio)
-- `t2_pregnant_danger` to `t7_hinglish`: Status MISSING (Audio file not found in test environment)
+### Test Case Status
+
+- t1_fever: *FAIL* — reported risk: low.
+- t2_pregnant_danger through t7_hinglish: *MISSING* — the corresponding audio files were not found in the test environment.
+
+These results should not be interpreted as evidence of clinical safety or readiness. In particular, a danger recall of 0.0% means the current evaluation has not demonstrated successful detection of the evaluated danger cases.
+
+*Next steps:* Restore or generate the missing scripted test assets, rerun the evaluation, inspect extraction errors and false negatives, and report the updated results with the test-set size and evaluation method.
+
+## Privacy and Safety
+
+- *No diagnosis:* The system is intended to support documentation, not diagnose conditions, prescribe medicines or replace a healthcare professional.
+- *Human verification:* Extracted information must be checked and corrected by the health worker.
+- *Uncertainty matters:* Missing, ambiguous or unverified information must not be presented as confirmed fact.
+- *Responsible testing:* Use fictional, scripted test data for development and evaluation unless appropriate authorization and safeguards are in place.
+- *Secure configuration:* Keep credentials outside source control and follow applicable privacy requirements before handling real patient information.
+
+Any danger-sign or referral alert must be clinically reviewed and validated before real-world use. An alert must not be treated as a definitive clinical decision.
+
+## Development During the Hackathon
+
+*Hackathon date:* 23 October 2026
+
+ASHA Scribe was developed for the Google Gemini Hackathon. The team should document its actual development timeline and distinguish pre-existing work from features created during the event.
+
+The repository's commit history provides a record of changes. The statements in this section should be updated to match the actual code, assets and commits.
+
+## Team Velionyx
+
+- *Harish Choudhary* — Team Lead and Application Development
+- *Vikash Kaushal* — Research and Presentation
+- *Akshay Singh* — Testing and Demo
+
+## Acknowledgements
+
+- Google Gemini API
+- Google Antigravity
+- Streamlit
+- Pydantic
+- python-dotenv
+
+We acknowledge the tools and libraries used in the project. Third-party assets, datasets and additional dependencies should be credited where applicable.
+
+## Project Status
+
+*Hackathon prototype — evaluation issues remain open.*
+
+The current results do not establish production readiness. Further testing, validation, privacy safeguards and review by qualified healthcare stakeholders are necessary before real-world deployment.
+
+---
+
+Built by Team Velionyx for the Google Gemini Hackathon, RUVERSE Techfest 2026
